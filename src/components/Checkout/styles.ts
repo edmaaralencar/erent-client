@@ -16,6 +16,15 @@ export const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.gray.lighter};
   border-radius: 0.8rem;
 
+  @media (max-width: 920px) {
+    width: 100%;
+    position: static !important;
+  } 
+
+  @media (max-width: 520px) {
+    padding: 2.4rem;
+  }
+
   /* > .spinner {
     @keyframes spin {
       to {

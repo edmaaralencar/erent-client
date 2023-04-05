@@ -36,6 +36,12 @@ export const NavList = styled(motion.div)`
 export const NavLinkWrapper = styled(motion.a)`
   text-decoration: none;
   color: ${({ theme }) => theme.colors.text};
+
+  @media (max-width: 520px) {
+    &:not(:nth-child(3)) {
+      display: none;
+    }
+  }
 `
 
 type NavLinkProps = {
@@ -88,6 +94,10 @@ export const Profile = styled(motion.div)`
     font-size: 1.6rem;
     font-weight: ${({ theme }) => theme.font.weight.medium};
     color: ${({ theme }) => theme.colors.black.main};
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   .image {

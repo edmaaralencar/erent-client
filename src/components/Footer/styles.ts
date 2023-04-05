@@ -26,6 +26,7 @@ export const Icons = styled.div`
 export const Icon = styled.a`
   height: 4rem;
   width: 4rem;
+  text-decoration: none;
 
   display: grid;
   place-items: center;

@@ -51,8 +51,14 @@ export const Container = styled(motion.div)`
 
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+
     align-items: center;
     gap: 2.4rem;
+
+    @media (max-width: 450px) {
+      padding: 1.6rem;
+    }
   `}
 `
 
@@ -101,7 +107,7 @@ export const ItemContent = styled.div`
 
   @media (max-width: 768px) {
     strong {
-      font-size: 3.2rem
+      font-size: 3.2rem;
     }
 
     span {

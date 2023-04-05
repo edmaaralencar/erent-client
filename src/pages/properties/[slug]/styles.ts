@@ -11,6 +11,11 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   gap: 6rem;
+
+  @media (max-width: 520px) {
+    gap: 0;
+    justify-content: space-between;
+  }
 `
 
 export const HeaderInfo = styled.div`
@@ -37,15 +42,23 @@ export const HorizontalLine = styled.hr`
 
 export const Container = styled.div`
   display: flex;
-  grid-template-columns: 2fr 1fr;
   gap: 6rem;
   max-width: 130rem;
 
   position: relative;
+
+  @media (max-width: 920px) {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 `
 
 export const PropertyInfo = styled.section`
   width: calc(100% - 47.5rem);
+
+  @media (max-width: 920px) {
+    width: 100%;
+  }
 `
 
 export const ImageSlider = styled.div``
@@ -99,6 +112,10 @@ export const Options = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.4rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const Option = styled.div`
@@ -153,6 +170,11 @@ export const Comment = styled.div`
   display: grid;
   grid-template-columns: 12rem 1fr;
   gap: 2.4rem;
+
+  @media (max-width: 520px) {
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 export const CommentProfile = styled.div`

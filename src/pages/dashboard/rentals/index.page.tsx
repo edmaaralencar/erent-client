@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import { ReactElement, useState } from 'react'
 
 import { useRentals } from '@/services/hooks/use-rentals'
 import { dateFormatter, priceFormatter } from '@/utils/formatter'
@@ -6,11 +6,13 @@ import { withSSRAuth } from '@/utils/with-ssr-auth'
 
 import DashboardWrapper from '@/components/DashboardWrapper'
 import TableLoader from '@/components/TableLoader'
+import Pagination from '@/components/Pagination'
 
 import * as S from './styles'
 
 export default function DashboardRentals() {
-  const { data, isLoading } = useRentals()
+  const [currentPage, setCurrentPage] = useState(1)
+  const { data, isLoading } = useRentals({ currentPage })
 
   return (
     <S.Wrapper>
@@ -45,6 +47,13 @@ export default function DashboardRentals() {
           </S.Table>
         </S.ScrollWrapper>
       )}
+
+      <Pagination
+        totalCountOfRegisters={data?.totalCount}
+        currentPage={currentPage}
+        perPage={9}
+        onPageChange={setCurrentPage}
+      />
     </S.Wrapper>
   )
 }
@@ -53,10 +62,13 @@ DashboardRentals.getLayout = function (page: ReactElement) {
   return <DashboardWrapper title="Aluguéis">{page}</DashboardWrapper>
 }
 
-export const getServerSideProps = withSSRAuth(async ctx => {
-  return {
-    props: {}
+export const getServerSideProps = withSSRAuth(
+  async ctx => {
+    return {
+      props: {}
+    }
+  },
+  {
+    isAdmin: true
   }
-}, {
-  isAdmin: true
-})
+)

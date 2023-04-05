@@ -11,6 +11,11 @@ export const Wrapper = styled(motion.div)`
     display: grid;
     grid-template-columns: 1fr 1.3fr;
   }
+
+  @media (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 export const Content = styled.div`
@@ -20,6 +25,10 @@ export const Content = styled.div`
   justify-content: space-between;
 
   padding: 2.4rem;
+
+  @media (max-width: 500px) {
+    gap: 1.6rem;
+  }
 
   strong {
     font-size: 3.2rem;
@@ -48,5 +57,9 @@ export const ImageWrapper = styled.div`
 
   @media (max-width: 960px) {
     width: 100%;
+  }
+
+  @media (max-width: 500px) {
+    order: -1;
   }
 `

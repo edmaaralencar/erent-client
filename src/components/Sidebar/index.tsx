@@ -1,19 +1,11 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
-import {
-  FiAperture,
-  FiHome,
-  FiLogOut,
-  FiUser,
-  FiBookOpen,
-  FiCopy
-} from 'react-icons/fi'
-import { BiArrowBack } from 'react-icons/bi'
+import { FiHome, FiLogOut, FiUser, FiBookOpen, FiCopy } from 'react-icons/fi'
 
 import { useAuth } from '@/context/auth-context'
 
 import * as S from './styles'
-import Image from 'next/image'
 
 function Sidebar() {
   const router = useRouter()
@@ -22,13 +14,6 @@ function Sidebar() {
   return (
     <S.Wrapper>
       <S.NavList>
-        <Link href="/dashboard" passHref legacyBehavior>
-          <S.NavLink
-            className={router.pathname === '/dashboard' ? 'active' : ''}
-          >
-            <FiAperture size={24} color="#FFFFFF" />
-          </S.NavLink>
-        </Link>
         <Link href="/dashboard/properties" passHref legacyBehavior>
           <S.NavLink
             className={

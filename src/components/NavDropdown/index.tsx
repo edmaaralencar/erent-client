@@ -48,7 +48,7 @@ function NavDropdown({ isOpen }: NavDropdownProps) {
               </Dropdown.Item>
               {user.isAdmin && (
                 <Dropdown.Item>
-                  <Link href="/dashboard" passHref legacyBehavior>
+                  <Link href="/dashboard/properties" passHref legacyBehavior>
                     <S.Link onClick={onClick} variants={ITEM_ANIMATION}>
                       <FiAperture size={20} color="#18191F" />
                       <span>Dashboard</span>
