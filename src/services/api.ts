@@ -21,7 +21,7 @@ type Config = {
   headers: Record<string, string>
 }
 
-const url = 'http://localhost:3333'
+const url = process.env.NEXT_PUBLIC_API_URL
 
 export async function api({
   endpoint,
