@@ -10,6 +10,7 @@ import { ReactElement } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { api } from '@/services/api'
 import { withSSRAuth } from '@/utils/with-ssr-auth'
+import Spinner from '@/components/Spinner'
 
 export default function Success() {
   const { query } = useRouter()
@@ -33,7 +34,11 @@ export default function Success() {
   )
 
   if (isLoading) {
-    return <h1>Carregando...</h1>
+    return (
+      <S.SpinnerWrapper>
+        <Spinner />
+      </S.SpinnerWrapper>
+    )
   }
 
   return (

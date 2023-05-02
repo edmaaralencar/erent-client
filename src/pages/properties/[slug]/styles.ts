@@ -7,6 +7,13 @@ export const Wrapper = styled.div`
   padding: 2.4rem;
 `
 
+export const SpinnerWrapper = styled.div`
+  width: 100vw;
+  height: calc(100vh - 20rem);
+  display: grid;
+  place-items: center;
+`
+
 export const Header = styled.header`
   display: flex;
   align-items: center;

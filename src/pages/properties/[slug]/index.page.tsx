@@ -22,6 +22,7 @@ import Heading from '@/components/Heading'
 import Slider from '@/components/Slider'
 
 import * as S from './styles'
+import Spinner from '@/components/Spinner'
 
 type PropertyProps = {
   property: IProperty
@@ -69,12 +70,13 @@ export default function Property({ property }: PropertyProps) {
     slidesToShow: 1
   }
 
-  if (router.isFallback) return <h1>Carregando...</h1>
-
-  if (isLoading) {
-    return <h1>Carregando...</h1>
-  }
-
+  if (router.isFallback || isLoading)
+    return (
+      <S.SpinnerWrapper>
+        <Spinner />
+      </S.SpinnerWrapper>
+    )
+  
   const areRatingsLoading = isRatingsLoading || !ratings
 
   return (
