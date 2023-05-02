@@ -9,14 +9,14 @@ dayjs.updateLocale('en', {
   relativeTime: {
     future: 'in %s',
     past: '%s atrás',
-    s: 'a few seconds',
+    s: 'a alguns segundos',
     m: 'a minute',
     mm: '%d minutos',
-    h: 'an hour',
+    h: 'a uma hora',
     hh: '%d horas',
-    d: 'a day',
+    d: 'a um dia',
     dd: '%d dias',
-    M: 'a month',
+    M: 'a um mês',
     MM: '%d meses',
     y: 'a year',
     yy: '%d anos'
