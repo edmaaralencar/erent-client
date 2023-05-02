@@ -87,7 +87,7 @@ export function Home() {
                 bathrooms={property.bathrooms}
                 rooms={property.rooms}
                 city={property.city}
-                daily_price={property.daily_price}
+                dailyPrice={property.dailyPrice}
                 size={property.size}
               />
             ))}

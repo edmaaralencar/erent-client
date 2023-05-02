@@ -6,4 +6,4 @@ export default {
   component: Ratings
 } as Meta
 
-export const Default: StoryFn<typeof Ratings> = () => <Ratings />
+export const Default: StoryFn<typeof Ratings> = (props) => <Ratings {...props} />

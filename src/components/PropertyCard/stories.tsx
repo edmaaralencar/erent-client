@@ -14,7 +14,7 @@ Default.args = {
   id: '1',
   name: 'Casa na praia',
   city: 'Rio de Janeiro',
-  daily_price: 400,
+  dailyPrice: '400',
   rooms: 2,
   bathrooms: 2,
   size: 130,
