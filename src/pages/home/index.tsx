@@ -10,13 +10,14 @@ import Heading from '@/components/Heading'
 import { Container } from '@/components/Container'
 import PropertyCard from '@/components/PropertyCard'
 
-import { properties } from '../../utils/constants'
 import { CONTAINER_ANIMATION, DIVIDER_ANIMATION } from '@/utils/animations'
 import { testimonials } from './constants'
 
 import * as S from './styles'
+import { HomeProps } from '../index.page'
+import Link from 'next/link'
 
-export function Home() {
+export function Home({ properties, totalCountOfProperties }: HomeProps) {
   const settings: Settings = {
     dots: true,
     infinite: false,
@@ -64,7 +65,12 @@ export function Home() {
       <Container>
         <S.PropertiesWrapper>
           <S.Title>
-            <Heading level={2} weight="semibold">Propriedades mais bem avaliadas</Heading>
+            <div>
+              <Heading level={2} weight="semibold">
+                Propriedades mais recentes
+              </Heading>
+              <Link href="/properties">Ver mais</Link>
+            </div>
             <S.Hr
               variants={DIVIDER_ANIMATION}
               initial="hidden"
@@ -81,7 +87,7 @@ export function Home() {
             {properties?.slice(0, 6).map(property => (
               <PropertyCard
                 key={property.id}
-                image={property.images[0].src}
+                image={property.images[0].url}
                 name={property.name}
                 id={property.id}
                 bathrooms={property.bathrooms}

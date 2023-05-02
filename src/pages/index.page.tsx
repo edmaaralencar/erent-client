@@ -5,8 +5,14 @@ import { GetServerSidePropsContext } from 'next'
 import Head from 'next/head'
 import { ReactElement } from 'react'
 import { Home as HomeTemplate } from './home'
+import { IProperties, propertiesSchema } from '@/schemas/properties-schema'
 
-export default function Home() {
+export type HomeProps = {
+  properties: IProperties
+  totalCountOfProperties: number
+}
+
+export default function Home(props: HomeProps) {
   return (
     <>
       <Head>
@@ -15,7 +21,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <HomeTemplate />
+      <HomeTemplate {...props} />
     </>
   )
 }
@@ -23,14 +29,19 @@ export default function Home() {
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  const { properties } = await api({
+  const response = await api({
     method: 'GET',
     endpoint: '/properties',
     context: context
   })
 
+  const properties = propertiesSchema.parse(response.properties.slice(0, 6))
+
   return {
-    props: {}
+    props: {
+      properties,
+      totalCountOfProperties: response.totalCount
+    }
   }
 }
 

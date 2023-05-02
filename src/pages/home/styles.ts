@@ -136,6 +136,18 @@ export const Title = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+
+    a {
+      font-size: 2rem;
+      color: ${({ theme }) => theme.colors.black.main};
+    }
+  }
 `
 
 export const Hr = styled(motion.div)`
