@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FiPlus } from 'react-icons/fi'
+import { FiPlus, FiTrash } from 'react-icons/fi'
 
 import Button from '@/components/Button'
 import DashboardWrapper from '@/components/DashboardWrapper'
@@ -11,9 +11,32 @@ import TableLoader from '@/components/TableLoader'
 
 import * as S from './styles'
 import { withSSRAuth } from '@/utils/with-ssr-auth'
+import { useMutation } from '@tanstack/react-query'
+import { api } from '@/services/api'
+import { queryClient } from '@/lib/query-client'
+import { toast } from 'react-toastify'
 
 export default function Options() {
   const { data, isLoading } = useOptions()
+
+  const deleteOption = useMutation(
+    async (optionId: string) => {
+      await api({
+        method: 'DELETE',
+        endpoint: `/options/${optionId}`
+      })
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(['options'])
+        toast.success('Opção deletada com sucesso.')
+      }
+    }
+  )
+
+  async function handleDeleteOption(id: string) {
+    await deleteOption.mutateAsync(id)
+  }
 
   return (
     <S.Wrapper>
@@ -40,6 +63,11 @@ export default function Options() {
                   />
                 </S.Td>
                 <S.Td>{option.name}</S.Td>
+                <S.Td>
+                  <button onClick={() => handleDeleteOption(option.id)}>
+                    <FiTrash size={32} />
+                  </button>
+                </S.Td>
               </S.Tr>
             ))}
           </tbody>

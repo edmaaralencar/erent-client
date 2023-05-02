@@ -34,7 +34,7 @@ export const Table = styled.table`
 
 export const Tr = styled.tr`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   margin: 0px 3.2rem;
   padding: 2.4rem 0px;
@@ -60,6 +60,11 @@ export const Td = styled.td`
   font-size: 1.8rem;
   color: ${({ theme }) => theme.colors.text};
   text-align: center;
+
+  button {
+    background-color: transparent;
+    border: 0;
+  }
 
   @media (max-width: 500px) {
     min-width: auto;
