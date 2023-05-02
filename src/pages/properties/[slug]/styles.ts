@@ -48,8 +48,8 @@ export const Container = styled.div`
   position: relative;
 
   @media (max-width: 920px) {
-    display: grid;
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    gap: 2.4rem;
   }
 `
 
@@ -61,7 +61,11 @@ export const PropertyInfo = styled.section`
   }
 `
 
-export const ImageSlider = styled.div``
+export const ImageSlider = styled.div`
+  /* @media (max-width: 920px) {
+    max-width: 100vw;
+  } */
+`
 
 export const Slide = styled.div`
   position: relative;

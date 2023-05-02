@@ -31,8 +31,6 @@ export default function Properties({
 
   const { page, region, rooms, dailyPrice } = router.query
 
-  console.log({ region, rooms, dailyPrice })
-
   function handlePageChange(page: number) {
     router.push(`/properties?page=${page}`)
   }

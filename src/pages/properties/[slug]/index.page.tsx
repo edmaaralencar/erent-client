@@ -21,6 +21,7 @@ import { ratingsSchema } from '@/schemas/ratings-schema'
 import { FiStar } from 'react-icons/fi'
 import { AiFillStar } from 'react-icons/ai'
 import dayjs from 'dayjs'
+import { useRouter } from 'next/router'
 
 type PropertyProps = {
   property: IProperty
@@ -28,6 +29,7 @@ type PropertyProps = {
 
 export default function Property({ property }: PropertyProps) {
   const { data, isLoading } = useOptions()
+  const router = useRouter()
 
   const { data: ratings, isLoading: isRatingsLoading } = useQuery(
     [`ratings/${property.id}`, property.id],
@@ -66,6 +68,8 @@ export default function Property({ property }: PropertyProps) {
     speed: 500,
     slidesToShow: 1
   }
+
+  if (router.isFallback) return <h1>Carregando...</h1>
 
   if (isLoading) {
     return <h1>Carregando...</h1>
@@ -204,7 +208,9 @@ export async function getStaticPaths() {
     params: { slug: id }
   }))
 
-  return { paths, fallback: false }
+  console.log(paths)
+
+  return { paths, fallback: true }
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -215,11 +221,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const property = propertySchema.parse(response.property)
 
+  console.log(property)
   return {
-    revalidate: 60,
     props: {
       property
-    }
+    },
+    revalidate: 60
   }
 }
 
