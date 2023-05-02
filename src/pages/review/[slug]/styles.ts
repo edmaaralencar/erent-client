@@ -67,7 +67,7 @@ export const Textarea = styled.div`
       height: 18rem;
       padding: 1.3rem 1.8rem;
 
-      font-family: '__Inter_231d4d', '__Inter_Fallback_231d4d';
+      /* font-family: '__Inter_231d4d', '__Inter_Fallback_231d4d'; */
 
       resize: none;
       outline: none;

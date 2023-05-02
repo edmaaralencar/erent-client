@@ -23,9 +23,9 @@ export const Textarea = styled.div`
     textarea {
       width: 100%;
       height: 18rem;
-      padding: 2.2rem 2.4rem;
+      padding: 1.6rem 2.4rem;
 
-      font-family: '__Inter_231d4d', '__Inter_Fallback_231d4d';
+      /* font-family: '__Inter_231d4d', '__Inter_Fallback_231d4d'; */
 
       resize: none;
       outline: none;

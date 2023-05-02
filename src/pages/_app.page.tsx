@@ -36,7 +36,12 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <QueryClientProvider client={queryClient}>
       <style jsx global>{`
-        html {
+        html,
+        * {
+          font-family: ${inter.style.fontFamily};
+        }
+
+        textarea {
           font-family: ${inter.style.fontFamily};
         }
       `}</style>
