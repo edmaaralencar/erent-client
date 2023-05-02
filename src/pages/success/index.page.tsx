@@ -44,8 +44,8 @@ export default function Success() {
         </Heading>
         <S.Image>
           <Image
-            src={`http://localhost:3333/files/properties/${data?.property?.images[0].filename}`}
-            alt=""
+            src={`https://erent-client-images.s3.amazonaws.com/${data?.property?.images[0].filename}`}
+            alt={data?.property?.name}
             fill
           />
         </S.Image>

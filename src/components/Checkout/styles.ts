@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 
   /* width: 100%; */
   width: 41.5rem;
-  height: 41.5rem;
+  height: 50rem;
   padding: 4.4rem;
 
   background-color: ${({ theme }) => theme.colors.gray.lighter};
