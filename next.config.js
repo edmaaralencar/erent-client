@@ -3,12 +3,12 @@ const nextConfig = {
   reactStrictMode: true,
   // swcMinify: true,
   compiler: {
-    styledComponents: true,
+    styledComponents: true
   },
-  pageExtensions: ["page.tsx", "api.ts", "api.tsx"],
+  pageExtensions: ['page.tsx', 'api.ts', 'api.tsx'],
   images: {
-    domains: ['localhost']
+    domains: ['localhost', 'erent-client-images.s3.amazonaws.com']
   }
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

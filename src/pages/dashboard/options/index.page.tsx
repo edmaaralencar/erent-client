@@ -20,31 +20,30 @@ export default function Options() {
       {isLoading ? (
         <TableLoader />
       ) : (
-
-      <S.Table>
-        <thead>
-          <S.Tr>
-            <S.Th>Imagem</S.Th>
-            <S.Th>Opção</S.Th>
-          </S.Tr>
-        </thead>
-        <tbody>
-          {data?.options.map(option => (
-            <S.Tr key={option.id}>
-              <S.Td>
-                <Image
-                  className="avatar"
-                  src={option.imageUrl}
-                  alt={option.name}
-                  width={38}
-                  height={38}
-                />
-              </S.Td>
-              <S.Td>{option.name}</S.Td>
+        <S.Table>
+          <thead>
+            <S.Tr>
+              <S.Th>Imagem</S.Th>
+              <S.Th>Opção</S.Th>
             </S.Tr>
-          ))}
-        </tbody>
-      </S.Table>
+          </thead>
+          <tbody>
+            {data?.options.map(option => (
+              <S.Tr key={option.id}>
+                <S.Td>
+                  <Image
+                    className="avatar"
+                    src={option.imageUrl}
+                    alt={option.name}
+                    width={38}
+                    height={38}
+                  />
+                </S.Td>
+                <S.Td>{option.name}</S.Td>
+              </S.Tr>
+            ))}
+          </tbody>
+        </S.Table>
       )}
     </S.Wrapper>
   )
@@ -82,10 +81,13 @@ Options.getLayout = function getLayout(page: ReactElement) {
   )
 }
 
-export const getServerSideProps = withSSRAuth(async ctx => {
-  return {
-    props: {}
+export const getServerSideProps = withSSRAuth(
+  async ctx => {
+    return {
+      props: {}
+    }
+  },
+  {
+    isAdmin: true
   }
-}, {
-  isAdmin: true
-})
+)
