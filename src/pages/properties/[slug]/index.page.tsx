@@ -1,27 +1,27 @@
-import { ReactElement } from 'react'
+import { Fragment, ReactElement } from 'react'
 import { GetStaticProps } from 'next'
 import Image from 'next/image'
 import { FaBath, FaBed } from 'react-icons/fa'
 import { Settings } from 'react-slick'
+import { useQuery } from '@tanstack/react-query'
+import { FiStar } from 'react-icons/fi'
+import { AiFillStar } from 'react-icons/ai'
+import dayjs from 'dayjs'
+import { useRouter } from 'next/router'
 
 import { useOptions } from '@/services/hooks/use-options'
 import { getProperties } from '@/services/hooks/use-properties'
 import { priceFormatter } from '@/utils/formatter'
 import { IProperty, propertySchema } from '@/schemas/properties-schema'
+import { ratingsSchema } from '@/schemas/ratings-schema'
+import { api } from '@/services/api'
 
 import AppWrapper from '@/components/AppWrapper'
 import Checkout from '@/components/Checkout'
 import Heading from '@/components/Heading'
 import Slider from '@/components/Slider'
-import { api } from '@/services/api'
 
 import * as S from './styles'
-import { useQuery } from '@tanstack/react-query'
-import { ratingsSchema } from '@/schemas/ratings-schema'
-import { FiStar } from 'react-icons/fi'
-import { AiFillStar } from 'react-icons/ai'
-import dayjs from 'dayjs'
-import { useRouter } from 'next/router'
 
 type PropertyProps = {
   property: IProperty
@@ -152,7 +152,7 @@ export default function Property({ property }: PropertyProps) {
         {areRatingsLoading ? (
           <p>Carregando...</p>
         ) : (
-          <>
+          <Fragment>
             <S.HorizontalLine />
             <S.CommentsHeader>
               <AiFillStar size={32} color="#18191F" />
@@ -192,7 +192,7 @@ export default function Property({ property }: PropertyProps) {
             ) : (
               <S.NotFound>Nenhuma avaliação disponível.</S.NotFound>
             )}
-          </>
+          </Fragment>
         )}
       </S.CommentsContainer>
     </S.Wrapper>
@@ -208,9 +208,7 @@ export async function getStaticPaths() {
     params: { slug: id }
   }))
 
-  console.log(paths)
-
-  return { paths, fallback: true }
+  return { paths, fallback: 'blocking' }
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -221,7 +219,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const property = propertySchema.parse(response.property)
 
-  console.log(property)
   return {
     props: {
       property
