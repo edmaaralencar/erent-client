@@ -16,6 +16,20 @@ export const Wrapper = styled.div`
     flex-direction: row;
     margin: 0 1.8rem;
   }
+
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+
+    flex-direction: column;
+    /* padding: 1rem; */
+
+    .button {
+      margin: 1.8rem;
+      max-width: 90%;
+    }
+  }
 `
 
 export const Divider = styled.hr`
@@ -23,6 +37,11 @@ export const Divider = styled.hr`
   width: 0.8rem;
   background: #f5f8fa;
   border: 0;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 0.4rem;
+  }
 `
 
 export const Content = styled(motion.div)`
@@ -38,6 +57,12 @@ export const Content = styled(motion.div)`
   box-shadow: 10px 10px red;
 
   border-radius: 0.5rem;
+
+  @media (max-width: 768px) {
+    top: 8rem;
+    z-index: 10;
+    width: 100%;
+  }
 `
 
 export const Link = styled(motion.button)`
@@ -61,6 +86,10 @@ export const Link = styled(motion.button)`
   span {
     font-size: 1.6rem;
     color: ${({ theme }) => theme.colors.white.main};
+  }
+
+  @media (max-width: 768px) {
+    justify-content: center;
   }
 `
 

@@ -43,12 +43,22 @@ export const Filters = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2.4rem;
   max-width: 60rem;
+
+  @media (max-width: 580px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem;
+    max-width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const Filter = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 1rem;
 
   label {
     font-size: 1.6rem;

@@ -72,7 +72,7 @@ export const Testimonial = styled.div`
 
 export const TestimonialContent = styled.div`
   width: 100%;
-  height: 24rem;
+  min-height: 24rem;
   padding: 2.4rem;
 
   display: flex;
@@ -142,6 +142,12 @@ export const Title = styled.div`
     justify-content: space-between;
     align-items: flex-end;
     width: 100%;
+
+    @media (max-width: 650px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.2rem;
+    }
 
     a {
       font-size: 2rem;

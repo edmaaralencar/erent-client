@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { ReactElement } from 'react'
 import Image from 'next/image'
 import dayjs from 'dayjs'
@@ -7,18 +8,20 @@ import { useQuery } from '@tanstack/react-query'
 import { api } from '@/services/api'
 import { getUserRentalsSchema } from '@/schemas/rentals-schema'
 import { withSSRAuth } from '@/utils/with-ssr-auth'
+import { useAuth } from '@/context/auth-context'
 import { priceFormatter } from '@/utils/formatter'
 
 import AccountWrapper from '@/components/AccountWrapper'
 import AppWrapper from '@/components/AppWrapper'
 import Button from '@/components/Button'
-import Link from 'next/link'
 
 import * as S from './styles'
 
 export default function Rentals() {
+  const { user } = useAuth()
+
   const { data } = useQuery(
-    ['rentals/me'],
+    ['rentals/me', user.name],
     async () => {
       const response = await api({
         method: 'GET',
@@ -75,10 +78,12 @@ export default function Rentals() {
                   </div>
                 </S.RentalDates>
               </S.RentalDetails>
-              <Link href={`/review/${rental.property.id}`} passHref legacyBehavior>
-                <Button as="a">
-                  Avaliar
-                </Button>
+              <Link
+                href={`/review/${rental.property.id}`}
+                passHref
+                legacyBehavior
+              >
+                <Button as="a">Avaliar</Button>
               </Link>
             </S.RentalContainer>
           </S.Rental>
